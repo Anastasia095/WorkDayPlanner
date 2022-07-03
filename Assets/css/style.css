@@ -69,3 +69,32 @@ textarea {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
+
+
+#mainContainer{
+  /* background-color: yellow; */
+  width: 100%;
+  padding:0;
+}
+
+.custom-col {
+  border-top: dashed;
+  border-bottom: dashed;
+  border-right:solid;
+  border-width:thin;
+}
+
+.custom-col-right {
+  text-align: center;
+  background-color: #06aed5;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-left: solid;
+  border-width: thin;
+}
+
+.col-10 {
+  padding:0;
+  background-color: lightgrey;
+}
+
