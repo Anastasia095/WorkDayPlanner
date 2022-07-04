@@ -1,36 +1,48 @@
 //selecting HTML Element
 var CurrentDay = document.getElementById("currentDay");
 var timeFormat = moment().format('dddd, MMMM Do');
-console.log(timeFormat);
-var x = document.getElementById("txtbtn0");
+var clock = new Date();
+var clockTime = clock.getHours();
+
 CurrentDay.innerHTML = timeFormat;
 
-// var plannerEvents = [];
-// var eventArray = [];
 
-//i < document.getElementsByClassName("saveBtn").length
+for (var y = 0; y < 9; y++){
+    var tableRaw = document.getElementById("txtbtn"+y);
+    tableRaw.textContent = localStorage.getItem("Eventbtn"+y);
+}
 
-// for(var k = 0; k < 3; k++) {
-//     console.log(k);
-//     document.getElementById("btn" + k).addEventListener('click',function(e){
-//         console.log("save btn test");
-//         //var userInput;
-//         var nodeNumber = e.target.id[3];
-//         console.log(e.target.id);
-//         userInput = document.getElementById("txt" + nodeNumber);
-//         console.log(userInput.value);
-//         localStorage.setItem("userInput", userInput.value);
+var timeVar = 9;
 
-//     });
-// }
-x.textContent = localStorage.getItem("Eventbtn0");
+for (var i = 0; i < 9; i++){
+    var checkTime = document.getElementById("txtbtn"+i);    
+
+    if (timeVar < clockTime){
+        console.log("0"+timeVar+":00" < clockTime);
+        checkTime.classList.add("past");
+    }
+
+    else if (timeVar == clockTime) {
+        checkTime.classList.add("present")
+    }
+
+    else
+        checkTime.classList.add("future");
+
+    timeVar++;
+}
+
+console.log(clockTime)
 
 var mainSection = document.getElementById("mainSection");
 
 mainSection.addEventListener('click', function(event){
-
     var selectedButton = event.target;
-    console.log(selectedButton.id);
+
+    if (selectedButton.tagName != 'BUTTON') 
+    return;
+
+    console.log(selectedButton.tagName);
     var userInput = document.getElementById("txt"+selectedButton.id);
 
    localStorage.setItem("Event" + selectedButton.id, userInput.value);
